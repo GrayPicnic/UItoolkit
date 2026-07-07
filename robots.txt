@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://guitoolkit.netlify.app/sitemap.xml
+Sitemap: https://graypicnic.github.io/UItoolkit/sitemap.xml
