@@ -211,6 +211,7 @@ code{font-family:'SF Mono','Fira Code',monospace;font-size:14px;background:var(-
         <button class="sub-tab" onclick="switchCalc('px2rem',this)">px → rem</button>
         <button class="sub-tab" onclick="switchCalc('rem2px',this)">rem → px</button>
         <button class="sub-tab" onclick="switchCalc('scale',this)">타입 스케일</button>
+        <button class="sub-tab" onclick="switchCalc('pot',this)">2의 거듭제곱</button>
       </div>
       <div id="baseRow" style="display:none;margin-bottom:16px">
         <label data-i18n="baseLabel">베이스 폰트 크기 (rem 기준)</label>
@@ -395,7 +396,7 @@ const UI_STRINGS = {
   ko: {
     appTitle:'UI 디자이너 툴킷',
     tabs:['수치 계산','컬러 변환','대비 체크','색맹 시뮬','팔레트 생성','다국어 번역','해상도 표'],
-    calcTabs:['배수 맞추기','px → rem','rem → px','타입 스케일'],
+    calcTabs:['배수 맞추기','px → rem','rem → px','타입 스케일','2의 거듭제곱'],
     colorTabs:['HEX → RGB','RGB → HEX'],
     contrastTabs:['HEX 입력','RGB 입력'],
     blindTabs:['HEX','RGB'],
@@ -522,7 +523,7 @@ const UI_STRINGS = {
   en: {
     appTitle:'UI Designer Toolkit',
     tabs:['Calculator','Color Converter','Contrast Check','Color Blind','Palette Gen','Translator','Resolution'],
-    calcTabs:['Grid Snap','px → rem','rem → px','Type Scale'],
+    calcTabs:['Grid Snap','px → rem','rem → px','Type Scale','Power of 2'],
     colorTabs:['HEX → RGB','RGB → HEX'],
     contrastTabs:['HEX Input','RGB Input'],
     blindTabs:['HEX','RGB'],
@@ -588,7 +589,7 @@ const UI_STRINGS = {
   'zh-CN': {
     appTitle:'UI设计师工具包',
     tabs:['数值计算','颜色转换','对比度检查','色盲模拟','调色板生成','多语言翻译','分辨率表'],
-    calcTabs:['网格对齐','px → rem','rem → px','字体比例'],
+    calcTabs:['网格对齐','px → rem','rem → px','字体比例','2的幂'],
     colorTabs:['HEX → RGB','RGB → HEX'],
     contrastTabs:['HEX输入','RGB输入'],
     blindTabs:['HEX','RGB'],
@@ -654,7 +655,7 @@ const UI_STRINGS = {
   'zh-TW': {
     appTitle:'UI設計師工具包',
     tabs:['數值計算','顏色轉換','對比度檢查','色盲模擬','調色板生成','多語言翻譯','解析度表'],
-    calcTabs:['網格對齊','px → rem','rem → px','字體比例'],
+    calcTabs:['網格對齊','px → rem','rem → px','字體比例','2的冪'],
     colorTabs:['HEX → RGB','RGB → HEX'],
     contrastTabs:['HEX輸入','RGB輸入'],
     blindTabs:['HEX','RGB'],
@@ -720,7 +721,7 @@ const UI_STRINGS = {
   ja: {
     appTitle:'UIデザイナーツールキット',
     tabs:['数値計算','カラー変換','コントラスト','色覚シミュレータ','パレット生成','多言語翻訳','解像度表'],
-    calcTabs:['グリッドスナップ','px → rem','rem → px','タイプスケール'],
+    calcTabs:['グリッドスナップ','px → rem','rem → px','タイプスケール','2のべき乗'],
     colorTabs:['HEX → RGB','RGB → HEX'],
     contrastTabs:['HEX入力','RGB入力'],
     blindTabs:['HEX','RGB'],
@@ -786,7 +787,7 @@ const UI_STRINGS = {
   es: {
     appTitle:'Kit de Herramientas UI',
     tabs:['Calculadora','Conversor de Color','Contraste','Daltonismo','Generador de Paleta','Traducción','Resolución'],
-    calcTabs:['Ajuste de cuadrícula','px → rem','rem → px','Escala tipográfica'],
+    calcTabs:['Ajuste de cuadrícula','px → rem','rem → px','Escala tipográfica','Potencia de 2'],
     colorTabs:['HEX → RGB','RGB → HEX'],
     contrastTabs:['Entrada HEX','Entrada RGB'],
     blindTabs:['HEX','RGB'],
@@ -851,7 +852,7 @@ const UI_STRINGS = {
   },
   pt: {
     appTitle:'Kit de Ferramentas UI', tabs:['Calculadora','Conversor de Cor','Contraste','Daltonismo','Gerador de Paleta','Tradução','Resolução'],
-    calcTabs:['Grade','px → rem','rem → px','Escala tipográfica'], colorTabs:['HEX → RGB','RGB → HEX'],
+    calcTabs:['Grade','px → rem','rem → px','Escala tipográfica','Potência de 2'], colorTabs:['HEX → RGB','RGB → HEX'],
     contrastTabs:['Entrada HEX','Entrada RGB'], blindTabs:['HEX','RGB'],
     calcBtn:'Calcular', convertBtn:'Converter', transBtn:'Traduzir', simBtn:'Executar simulação',
     copyBtn:'📋 Copiar resultado', addBtn:'+ Adicionar', applyBtn:'Aplicar', cancelBtn:'Cancelar', deleteBtn:'Excluir',
@@ -911,7 +912,7 @@ const UI_STRINGS = {
   },
   ru: {
     appTitle:'UI Инструменты Дизайнера', tabs:['Калькулятор','Конвертер цвета','Контраст','Цветослепота','Генератор палитры','Перевод','Разрешения'],
-    calcTabs:['Сетка','px → rem','rem → px','Шрифтовая шкала'], colorTabs:['HEX → RGB','RGB → HEX'],
+    calcTabs:['Сетка','px → rem','rem → px','Шрифтовая шкала','Степень 2'], colorTabs:['HEX → RGB','RGB → HEX'],
     contrastTabs:['Ввод HEX','Ввод RGB'], blindTabs:['HEX','RGB'],
     calcBtn:'Вычислить', convertBtn:'Конвертировать', transBtn:'Перевести', simBtn:'Запустить симуляцию',
     copyBtn:'📋 Копировать', addBtn:'+ Добавить', applyBtn:'Применить', cancelBtn:'Отмена', deleteBtn:'Удалить',
@@ -971,7 +972,7 @@ const UI_STRINGS = {
   },
   de: {
     appTitle:'UI Designer Werkzeugkasten', tabs:['Rechner','Farbkonverter','Kontrast','Farbenblind','Paletten-Gen.','Übersetzer','Auflösung'],
-    calcTabs:['Raster','px → rem','rem → px','Typskala'], colorTabs:['HEX → RGB','RGB → HEX'],
+    calcTabs:['Raster','px → rem','rem → px','Typskala','Zweierpotenz'], colorTabs:['HEX → RGB','RGB → HEX'],
     contrastTabs:['HEX Eingabe','RGB Eingabe'], blindTabs:['HEX','RGB'],
     calcBtn:'Berechnen', convertBtn:'Konvertieren', transBtn:'Übersetzen', simBtn:'Simulation starten',
     copyBtn:'📋 Ergebnis kopieren', addBtn:'+ Hinzufügen', applyBtn:'Anwenden', cancelBtn:'Abbrechen', deleteBtn:'Löschen',
@@ -1011,7 +1012,7 @@ const UI_STRINGS = {
   },
   fr: {
     appTitle:'Boîte à outils UI', tabs:['Calculateur','Convertisseur couleur','Contraste','Daltonisme','Générateur de palette','Traduction','Résolution'],
-    calcTabs:['Grille','px → rem','rem → px','Échelle typographique'], colorTabs:['HEX → RGB','RGB → HEX'],
+    calcTabs:['Grille','px → rem','rem → px','Échelle typographique','Puissance de 2'], colorTabs:['HEX → RGB','RGB → HEX'],
     contrastTabs:['Entrée HEX','Entrée RGB'], blindTabs:['HEX','RGB'],
     calcBtn:'Calculer', convertBtn:'Convertir', transBtn:'Traduire', simBtn:'Lancer la simulation',
     copyBtn:'📋 Copier le résultat', addBtn:'+ Ajouter', applyBtn:'Appliquer', cancelBtn:'Annuler', deleteBtn:'Supprimer',
@@ -1071,7 +1072,7 @@ const UI_STRINGS = {
   },
   ar: {
     appTitle:'مجموعة أدوات UI', tabs:['الحاسبة','محول الألوان','التباين','عمى الألوان','مولد اللوحة','الترجمة','الدقة'],
-    calcTabs:['شبكة','px → rem','rem → px','مقياس الخط'], colorTabs:['HEX → RGB','RGB → HEX'],
+    calcTabs:['شبكة','px → rem','rem → px','مقياس الخط','أس 2'], colorTabs:['HEX → RGB','RGB → HEX'],
     contrastTabs:['إدخال HEX','إدخال RGB'], blindTabs:['HEX','RGB'],
     calcBtn:'احسب', convertBtn:'تحويل', transBtn:'ترجمة', simBtn:'تشغيل المحاكاة',
     copyBtn:'📋 نسخ النتيجة', addBtn:'+ إضافة', applyBtn:'تطبيق', cancelBtn:'إلغاء', deleteBtn:'حذف',
@@ -1129,7 +1130,7 @@ const UI_STRINGS = {
     transEmpty:'الرجاء إدخال النص للترجمة.',
     unfolded:'مفتوح',
   },
-  it:{appTitle:'Kit Strumenti UI',tabs:['Calcolatore','Convertitore colore','Contrasto','Daltonismo','Generatore di palette','Traduzione','Risoluzione'],calcTabs:['Griglia','px → rem','rem → px','Scala tipografica'],colorTabs:['HEX → RGB','RGB → HEX'],contrastTabs:['Inserimento HEX','Inserimento RGB'],blindTabs:['HEX','RGB'],calcBtn:'Calcola',convertBtn:'Converti',transBtn:'Traduci',simBtn:'Avvia simulazione',copyBtn:'📋 Copia risultato',addBtn:'+ Aggiungi',applyBtn:'Applica',cancelBtn:'Annulla',deleteBtn:'Elimina',kofi:'☕ Supporta il creatore : Ko-fi',
+  it:{appTitle:'Kit Strumenti UI',tabs:['Calcolatore','Convertitore colore','Contrasto','Daltonismo','Generatore di palette','Traduzione','Risoluzione'],calcTabs:['Griglia','px → rem','rem → px','Scala tipografica','Potenza di 2'],colorTabs:['HEX → RGB','RGB → HEX'],contrastTabs:['Inserimento HEX','Inserimento RGB'],blindTabs:['HEX','RGB'],calcBtn:'Calcola',convertBtn:'Converti',transBtn:'Traduci',simBtn:'Avvia simulazione',copyBtn:'📋 Copia risultato',addBtn:'+ Aggiungi',applyBtn:'Applica',cancelBtn:'Annulla',deleteBtn:'Elimina',kofi:'☕ Supporta il creatore : Ko-fi',
     remInfo:'Cos\'è <b>rem</b>? Un\'unità relativa basata sulla dimensione del carattere predefinita del browser (di solito 16px). Es: 1rem = 16px, 1.5rem = 24px. Utile per scalare tutte le dimensioni del testo contemporaneamente.',
     copyFailed:'⚠ Copia non riuscita',
     blindConflict:'difficile da distinguere',
@@ -1165,7 +1166,7 @@ const UI_STRINGS = {
     transLoading:'Traduzione in corso...',
     transEmpty:'Inserisci il testo da tradurre.',
     unfolded:'Espanso',
-  tr:{appTitle:'UI Tasarımcı Araç Seti',tabs:['Hesaplayıcı','Renk Dönüştürücü','Kontrast','Renk Körlüğü','Palet Üretici','Çeviri','Çözünürlük'],calcTabs:['Izgara','px → rem','rem → px','Tip Ölçeği'],colorTabs:['HEX → RGB','RGB → HEX'],contrastTabs:['HEX Girişi','RGB Girişi'],blindTabs:['HEX','RGB'],calcBtn:'Hesapla',convertBtn:'Dönüştür',transBtn:'Çevir',simBtn:'Simülasyonu Çalıştır',copyBtn:'📋 Sonucu Kopyala',addBtn:'+ Ekle',applyBtn:'Uygula',cancelBtn:'İptal',deleteBtn:'Sil',kofi:'☕ Yaratıcıyı Destekle : Ko-fi',
+  tr:{appTitle:'UI Tasarımcı Araç Seti',tabs:['Hesaplayıcı','Renk Dönüştürücü','Kontrast','Renk Körlüğü','Palet Üretici','Çeviri','Çözünürlük'],calcTabs:['Izgara','px → rem','rem → px','Tip Ölçeği','2\'nin Kuvveti'],colorTabs:['HEX → RGB','RGB → HEX'],contrastTabs:['HEX Girişi','RGB Girişi'],blindTabs:['HEX','RGB'],calcBtn:'Hesapla',convertBtn:'Dönüştür',transBtn:'Çevir',simBtn:'Simülasyonu Çalıştır',copyBtn:'📋 Sonucu Kopyala',addBtn:'+ Ekle',applyBtn:'Uygula',cancelBtn:'İptal',deleteBtn:'Sil',kofi:'☕ Yaratıcıyı Destekle : Ko-fi',
     remInfo:'<b>rem</b> nedir? Tarayıcının varsayılan yazı tipi boyutuna (genellikle 16px) dayalı göreceli bir birimdir. Örn: 1rem = 16px, 1.5rem = 24px. Tüm metin boyutlarını aynı anda ölçeklendirmek için kullanışlıdır.',
     copyFailed:'⚠ Kopyalama başarısız',
     blindConflict:'ayırt etmek zor',
@@ -1181,7 +1182,7 @@ const UI_STRINGS = {
     copied:'✓ Kopyalandı',
     colorInputError:'Lütfen geçerli bir renk değeri girin.',
     resAll:'Tümü',resUltra:'Ultra Geniş',resMobile:'Son Mobil',resColDevice:'Cihaz',resColRes:'Çözünürlük',resColRatio:'Oran',resColCat:'Kategori',sortNote:'📏 Metin uzunluğuna göre (en uzun önce)',calcTypeLabel:'Hesaplama Türü',baseLabel:'Temel Yazı Tipi Boyutu (rem)',multLabel:'Izgara Birimi',wLabel:'Genişlik (px)',hLabel:'Yükseklik (px)',resFilterLabel:'Oran Filtresi',colorModeLabel:'Yön',fgLabel:'Ön Plan Rengi (Metin)',bgLabel:'Arka Plan Rengi',fgRgbLabel:'Ön Plan R, G, B',bgRgbLabel:'Arka Plan R, G, B',addColorLabel:'Renk Ekle',paletteLabel:'Palet',paletteHint:'— düzenlemek için tıklayın',editTitle:'Rengi Düzenle',srcLangLabel:'Kaynak Dil',transTextLabel:'Çevrilecek Metin',transLangLabel:'Hedef Diller',selAll:'Tümünü Seç',deselAll:'Tümünü Kaldır',transPlaceholder:'Çevrilecek metni girin',colorInLabelHex:'HEX Renk Kodu',colorInLabelRgb:'R, G, B Değerleri (virgülle ayrılmış)',wcagNote:'WCAG 2.1 — AA: 4.5:1↑ / AA büyük: 3:1↑ / AAA: 7:1↑',aaLarge:'AA Büyük Metin',aaText:'AA Normal Metin',aaa:'AAA',pass:'✓ Geçti',fail:'✗ Geçmedi',copyTip:'💡 Önerilen',alreadyMult:'✓ Zaten',calcCopy:'📋 Sonucu Kopyala',infoApiNote:'✅ API anahtarı gerekmez — MyMemory ücretsiz API (günlük 5.000 kelime)',previewText:'Önizleme Metni',previewSm:'Küçük metin önizlemesi',blindNormal:'Normal Görme',blindP:'Protanopi',blindD:'Deuteranopi',blindT:'Tritanopi',blindA:'Akromatopsi',blindDescP:'Kırmızı reseptör yok',blindDescD:'Yeşil reseptör yok',blindDescT:'Mavi reseptör yok',blindDescA:'Renk algısı yok',},
-  vi:{appTitle:'Bộ Công Cụ UI',tabs:['Máy Tính','Chuyển Đổi Màu','Tương Phản','Mù Màu','Tạo Bảng Màu','Dịch Thuật','Độ Phân Giải'],calcTabs:['Lưới','px → rem','rem → px','Thang Phông Chữ'],colorTabs:['HEX → RGB','RGB → HEX'],contrastTabs:['Nhập HEX','Nhập RGB'],blindTabs:['HEX','RGB'],calcBtn:'Tính toán',convertBtn:'Chuyển đổi',transBtn:'Dịch',simBtn:'Chạy mô phỏng',copyBtn:'📋 Sao chép kết quả',addBtn:'+ Thêm',applyBtn:'Áp dụng',cancelBtn:'Hủy',deleteBtn:'Xóa',kofi:'☕ Ủng hộ tác giả : Ko-fi',
+  vi:{appTitle:'Bộ Công Cụ UI',tabs:['Máy Tính','Chuyển Đổi Màu','Tương Phản','Mù Màu','Tạo Bảng Màu','Dịch Thuật','Độ Phân Giải'],calcTabs:['Lưới','px → rem','rem → px','Thang Phông Chữ','Lũy thừa của 2'],colorTabs:['HEX → RGB','RGB → HEX'],contrastTabs:['Nhập HEX','Nhập RGB'],blindTabs:['HEX','RGB'],calcBtn:'Tính toán',convertBtn:'Chuyển đổi',transBtn:'Dịch',simBtn:'Chạy mô phỏng',copyBtn:'📋 Sao chép kết quả',addBtn:'+ Thêm',applyBtn:'Áp dụng',cancelBtn:'Hủy',deleteBtn:'Xóa',kofi:'☕ Ủng hộ tác giả : Ko-fi',
     remInfo:'<b>rem</b> là gì? Đơn vị tương đối dựa trên cỡ chữ mặc định của trình duyệt (thường là 16px). VD: 1rem = 16px, 1.5rem = 24px. Hữu ích để điều chỉnh tất cả cỡ chữ cùng lúc.',
     copyFailed:'⚠ Sao chép thất bại',
     blindConflict:'khó phân biệt',
@@ -1217,7 +1218,7 @@ const UI_STRINGS = {
     transLoading:'Đang dịch...',
     transEmpty:'Vui lòng nhập văn bản cần dịch.',
     unfolded:'Mở rộng',
-  id:{appTitle:'Perangkat Desainer UI',tabs:['Kalkulator','Konversi Warna','Kontras','Buta Warna','Generator Palet','Terjemahan','Resolusi'],calcTabs:['Grid','px → rem','rem → px','Skala Tipografi'],colorTabs:['HEX → RGB','RGB → HEX'],contrastTabs:['Input HEX','Input RGB'],blindTabs:['HEX','RGB'],calcBtn:'Hitung',convertBtn:'Konversi',transBtn:'Terjemahkan',simBtn:'Jalankan Simulasi',copyBtn:'📋 Salin Hasil',addBtn:'+ Tambah',applyBtn:'Terapkan',cancelBtn:'Batal',deleteBtn:'Hapus',kofi:'☕ Dukung Pembuat : Ko-fi',
+  id:{appTitle:'Perangkat Desainer UI',tabs:['Kalkulator','Konversi Warna','Kontras','Buta Warna','Generator Palet','Terjemahan','Resolusi'],calcTabs:['Grid','px → rem','rem → px','Skala Tipografi','Pangkat 2'],colorTabs:['HEX → RGB','RGB → HEX'],contrastTabs:['Input HEX','Input RGB'],blindTabs:['HEX','RGB'],calcBtn:'Hitung',convertBtn:'Konversi',transBtn:'Terjemahkan',simBtn:'Jalankan Simulasi',copyBtn:'📋 Salin Hasil',addBtn:'+ Tambah',applyBtn:'Terapkan',cancelBtn:'Batal',deleteBtn:'Hapus',kofi:'☕ Dukung Pembuat : Ko-fi',
     remInfo:'Apa itu <b>rem</b>? Satuan relatif berdasarkan ukuran font default browser (biasanya 16px). Contoh: 1rem = 16px, 1.5rem = 24px. Berguna untuk menskalakan semua ukuran teks sekaligus.',
     copyFailed:'⚠ Gagal menyalin',
     blindConflict:'sulit dibedakan',
@@ -1253,7 +1254,7 @@ const UI_STRINGS = {
     transLoading:'Sedang menerjemahkan...',
     transEmpty:'Silakan masukkan teks yang akan diterjemahkan.',
     unfolded:'Dibentangkan',
-  th:{appTitle:'ชุดเครื่องมือ UI',tabs:['เครื่องคิดเลข','แปลงสี','ตรวจสอบคอนทราสต์','ตาบอดสี','สร้างจานสี','แปลภาษา','ความละเอียด'],calcTabs:['กริด','px → rem','rem → px','สเกลฟอนต์'],colorTabs:['HEX → RGB','RGB → HEX'],contrastTabs:['ป้อน HEX','ป้อน RGB'],blindTabs:['HEX','RGB'],calcBtn:'คำนวณ',convertBtn:'แปลง',transBtn:'แปลภาษา',simBtn:'เรียกใช้การจำลอง',copyBtn:'📋 คัดลอกผลลัพธ์',addBtn:'+ เพิ่ม',applyBtn:'ใช้งาน',cancelBtn:'ยกเลิก',deleteBtn:'ลบ',kofi:'☕ สนับสนุนผู้สร้าง : Ko-fi',
+  th:{appTitle:'ชุดเครื่องมือ UI',tabs:['เครื่องคิดเลข','แปลงสี','ตรวจสอบคอนทราสต์','ตาบอดสี','สร้างจานสี','แปลภาษา','ความละเอียด'],calcTabs:['กริด','px → rem','rem → px','สเกลฟอนต์','ยกกำลัง 2'],colorTabs:['HEX → RGB','RGB → HEX'],contrastTabs:['ป้อน HEX','ป้อน RGB'],blindTabs:['HEX','RGB'],calcBtn:'คำนวณ',convertBtn:'แปลง',transBtn:'แปลภาษา',simBtn:'เรียกใช้การจำลอง',copyBtn:'📋 คัดลอกผลลัพธ์',addBtn:'+ เพิ่ม',applyBtn:'ใช้งาน',cancelBtn:'ยกเลิก',deleteBtn:'ลบ',kofi:'☕ สนับสนุนผู้สร้าง : Ko-fi',
     remInfo:'<b>rem</b> คืออะไร? หน่วยสัมพัทธ์ที่อ้างอิงจากขนาดฟอนต์เริ่มต้นของเบราว์เซอร์ (โดยปกติ 16px) เช่น 1rem = 16px, 1.5rem = 24px มีประโยชน์ในการปรับขนาดข้อความทั้งหมดพร้อมกัน',
     copyFailed:'⚠ คัดลอกไม่สำเร็จ',
     blindConflict:'แยกแยะยาก',
@@ -1269,7 +1270,7 @@ const UI_STRINGS = {
     copied:'✓ คัดลอกแล้ว',
     colorInputError:'กรุณาป้อนค่าสีที่ถูกต้อง',
     resAll:'ทั้งหมด',resUltra:'อัลตร้าไวด์',resMobile:'มือถือล่าสุด',resColDevice:'อุปกรณ์',resColRes:'ความละเอียด',resColRatio:'อัตราส่วน',resColCat:'หมวดหมู่',sortNote:'📏 เรียงตามความยาว (ยาวที่สุดอยู่บน)',calcTypeLabel:'ประเภทการคำนวณ',baseLabel:'ขนาดฟอนต์พื้นฐาน (rem)',multLabel:'หน่วยกริด',wLabel:'ความกว้าง (px)',hLabel:'ความสูง (px)',resFilterLabel:'ตัวกรองสัดส่วน',colorModeLabel:'ทิศทาง',fgLabel:'สีพื้นหน้า (ข้อความ)',bgLabel:'สีพื้นหลัง',fgRgbLabel:'พื้นหน้า R, G, B',bgRgbLabel:'พื้นหลัง R, G, B',addColorLabel:'เพิ่มสี',paletteLabel:'จานสี',paletteHint:'— คลิกเพื่อแก้ไข',editTitle:'แก้ไขสี',srcLangLabel:'ภาษาต้นฉบับ',transTextLabel:'ข้อความที่ต้องการแปล',transLangLabel:'ภาษาเป้าหมาย',selAll:'เลือกทั้งหมด',deselAll:'ยกเลิกทั้งหมด',transPlaceholder:'ป้อนข้อความที่ต้องการแปล',colorInLabelHex:'รหัสสี HEX',colorInLabelRgb:'ค่า R, G, B (คั่นด้วยเครื่องหมายจุลภาค)',wcagNote:'WCAG 2.1 — AA: 4.5:1↑ / AA ใหญ่: 3:1↑ / AAA: 7:1↑',aaLarge:'AA ข้อความใหญ่',aaText:'AA ข้อความปกติ',aaa:'AAA',pass:'✓ ผ่าน',fail:'✗ ไม่ผ่าน',copyTip:'💡 แนะนำ',alreadyMult:'✓ เป็นแล้ว',calcCopy:'📋 คัดลอกผลลัพธ์',infoApiNote:'✅ ไม่ต้องใช้ API key — MyMemory ฟรี (5,000 คำ/วัน)',previewText:'ตัวอย่างข้อความ',previewSm:'ตัวอย่างข้อความขนาดเล็ก',blindNormal:'การมองเห็นปกติ',blindP:'ตาบอดสีแดง',blindD:'ตาบอดสีเขียว',blindT:'ตาบอดสีน้ำเงิน',blindA:'ตาบอดสีทั้งหมด',blindDescP:'ไม่มีตัวรับสีแดง',blindDescD:'ไม่มีตัวรับสีเขียว',blindDescT:'ไม่มีตัวรับสีน้ำเงิน',blindDescA:'ไม่มีการรับรู้สี',},
-  pl:{appTitle:'Zestaw narzędzi UI',tabs:['Kalkulator','Konwerter Kolorów','Kontrast','Daltonizm','Generator palety','Tłumaczenie','Rozdzielczość'],calcTabs:['Siatka','px → rem','rem → px','Skala typograficzna'],colorTabs:['HEX → RGB','RGB → HEX'],contrastTabs:['Wpisz HEX','Wpisz RGB'],blindTabs:['HEX','RGB'],calcBtn:'Oblicz',convertBtn:'Konwertuj',transBtn:'Przetłumacz',simBtn:'Uruchom symulację',copyBtn:'📋 Kopiuj wynik',addBtn:'+ Dodaj',applyBtn:'Zastosuj',cancelBtn:'Anuluj',deleteBtn:'Usuń',kofi:'☕ Wesprzyj twórcę : Ko-fi',
+  pl:{appTitle:'Zestaw narzędzi UI',tabs:['Kalkulator','Konwerter Kolorów','Kontrast','Daltonizm','Generator palety','Tłumaczenie','Rozdzielczość'],calcTabs:['Siatka','px → rem','rem → px','Skala typograficzna','Potęga 2'],colorTabs:['HEX → RGB','RGB → HEX'],contrastTabs:['Wpisz HEX','Wpisz RGB'],blindTabs:['HEX','RGB'],calcBtn:'Oblicz',convertBtn:'Konwertuj',transBtn:'Przetłumacz',simBtn:'Uruchom symulację',copyBtn:'📋 Kopiuj wynik',addBtn:'+ Dodaj',applyBtn:'Zastosuj',cancelBtn:'Anuluj',deleteBtn:'Usuń',kofi:'☕ Wesprzyj twórcę : Ko-fi',
     remInfo:'Czym jest <b>rem</b>? Jednostka względna oparta na domyślnym rozmiarze czcionki przeglądarki (zwykle 16px). Np.: 1rem = 16px, 1.5rem = 24px. Przydatna do skalowania wszystkich rozmiarów tekstu naraz.',
     copyFailed:'⚠ Kopiowanie nie powiodło się',
     blindConflict:'trudno odróżnić',
@@ -1305,7 +1306,7 @@ const UI_STRINGS = {
     transLoading:'Tłumaczenie w toku...',
     transEmpty:'Proszę wprowadzić tekst do przetłumaczenia.',
     unfolded:'Rozwinięty',
-  nl:{appTitle:'UI Designer Toolkit',tabs:['Rekenmachine','Kleurconverter','Contrast','Kleurenblind','Palet Generator','Vertaler','Resolutie'],calcTabs:['Raster','px → rem','rem → px','Typografische schaal'],colorTabs:['HEX → RGB','RGB → HEX'],contrastTabs:['HEX invoer','RGB invoer'],blindTabs:['HEX','RGB'],calcBtn:'Berekenen',convertBtn:'Converteren',transBtn:'Vertalen',simBtn:'Simulatie starten',copyBtn:'📋 Resultaat kopiëren',addBtn:'+ Toevoegen',applyBtn:'Toepassen',cancelBtn:'Annuleren',deleteBtn:'Verwijderen',kofi:'☕ Steun de maker : Ko-fi',
+  nl:{appTitle:'UI Designer Toolkit',tabs:['Rekenmachine','Kleurconverter','Contrast','Kleurenblind','Palet Generator','Vertaler','Resolutie'],calcTabs:['Raster','px → rem','rem → px','Typografische schaal','Macht van 2'],colorTabs:['HEX → RGB','RGB → HEX'],contrastTabs:['HEX invoer','RGB invoer'],blindTabs:['HEX','RGB'],calcBtn:'Berekenen',convertBtn:'Converteren',transBtn:'Vertalen',simBtn:'Simulatie starten',copyBtn:'📋 Resultaat kopiëren',addBtn:'+ Toevoegen',applyBtn:'Toepassen',cancelBtn:'Annuleren',deleteBtn:'Verwijderen',kofi:'☕ Steun de maker : Ko-fi',
     remInfo:'Wat is <b>rem</b>? Een relatieve eenheid gebaseerd op de standaard lettergrootte van de browser (meestal 16px). Bijv: 1rem = 16px, 1.5rem = 24px. Handig om alle tekstgroottes tegelijk te schalen.',
     copyFailed:'⚠ Kopiëren mislukt',
     blindConflict:'moeilijk te onderscheiden',
@@ -1457,6 +1458,10 @@ function switchCalc(type,btn){
     px2rem:`<label>px</label><input type="number" id="c1" value="16" onkeydown="enterRun(event)"/>`,
     rem2px:`<label>rem</label><input type="number" id="c1" value="1.5" step="0.125" onkeydown="enterRun(event)"/>`,
     scale:`<label>${_s.baseLabel||'베이스 폰트 크기 (pt)'}</label><input type="number" id="c1" value="10" step="0.5" onkeydown="enterRun(event)"/>`,
+    pot:`<div class="row row2" style="margin-bottom:8px">
+        <div><label>${_s.wLabel||'가로 (px)'}</label><input type="number" id="c1" value="300" min="1" onkeydown="enterRun(event)"/></div>
+        <div><label>${_s.hLabel||'세로 (px)'}</label><input type="number" id="c2" value="500" min="1" onkeydown="enterRun(event)"/></div>
+      </div>`,
   };
   document.getElementById('calcInputs').innerHTML=map[type]||'';
   document.getElementById('calcResult').style.display='none';
@@ -1470,6 +1475,14 @@ function snap(v,m){
   // 변동량 가장 낮은 쪽 자동선택
   const best=(v-d<=u-v)?d:u;
   return{down:d,up:u,best};
+}
+
+// n을 담을 수 있는 가장 작은 2의 거듭제곱 값 (반드시 올림)
+function nextPow2(n){
+  n=Math.max(1,Math.ceil(n));
+  let p=1;
+  while(p<n) p*=2;
+  return p;
 }
 
 function runCalc(){
@@ -1508,6 +1521,32 @@ function runCalc(){
     </div>
     <div style="margin-top:12px;font-size:13px;background:#f0f5ff;border:1px solid #c5d8fc;padding:10px 12px;border-radius:8px;color:#1a1a1a">
       📋 ${t('calcCopyLabel','복사 결과')}: <b style="color:#4a7afa">${w.best}*${h.best}</b>
+    </div>`;
+    box.innerHTML=html;box.style.display='block';return;
+  }
+  if(calcType==='pot'){
+    const potW=nextPow2(c1), potH=nextPow2(c2);
+    lastCopyW=potW; lastCopyH=potH;
+    document.getElementById('copyGridBtn').style.display='block';
+    const wSame=potW===c1, hSame=potH===c2;
+    html=`<div class="grid4-result">
+      <div class="grid4-box">
+        <div style="margin-bottom:10px">
+          <div class="grid4-val">${potW}px</div>
+          <div class="grid4-label">${wSame?t('alreadyMult','✓ 이미'):t('up','올림')}</div>
+          <div class="grid4-diff ${wSame?'diff-same':'diff-up'}">${wSame?'✓':'+'+(potW-c1)+'px'}</div>
+        </div>
+      </div>
+      <div class="grid4-box">
+        <div style="margin-bottom:10px">
+          <div class="grid4-val">${potH}px</div>
+          <div class="grid4-label">${hSame?t('alreadyMult','✓ 이미'):t('up','올림')}</div>
+          <div class="grid4-diff ${hSame?'diff-same':'diff-up'}">${hSame?'✓':'+'+(potH-c2)+'px'}</div>
+        </div>
+      </div>
+    </div>
+    <div style="margin-top:12px;font-size:13px;background:#f0f5ff;border:1px solid #c5d8fc;padding:10px 12px;border-radius:8px;color:#1a1a1a">
+      📋 ${t('calcCopyLabel','복사 결과')}: <b style="color:#4a7afa">${potW}*${potH}</b>
     </div>`;
     box.innerHTML=html;box.style.display='block';return;
   }
@@ -2401,7 +2440,7 @@ function loadState() {
 
     // 수치계산 탭 복원
     if (s.calcType) {
-      const tabMap = { grid: 0, px2rem: 1, rem2px: 2, scale: 3 };
+      const tabMap = { grid: 0, px2rem: 1, rem2px: 2, scale: 3, pot: 4 };
       const idx = tabMap[s.calcType] ?? 0;
       const btns = document.querySelectorAll('#calcTabBar .sub-tab');
       if (btns[idx]) switchCalc(s.calcType, btns[idx]);
